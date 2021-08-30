@@ -1,1 +1,1 @@
-from .pso import GeneticAlgirithm
+from .pso import ParticleSwarmOptimization
