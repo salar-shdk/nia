@@ -9,8 +9,8 @@ class SBX(CrossOver):
 
     def generate(self, population, num_children):
         children = []
-        for i in range(int(len(population/2)):
-            father1, father2 = populatio)n[i], population[i+1]
+        for i in range(int(len(population)/2)):
+            father1, father2 = population[i], population[i+1]
             rand = random.random()
             rand = 1 - rand if rand >= 0.5 else rand
             beta = (2 * rand) ** (1 / (1 + self.eta))
