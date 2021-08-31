@@ -13,8 +13,8 @@ class ParticleSwarmOptimization(NiaInterface):
                 num_agents = 10,        #number of agents
                 max_iterations = 100,   #max number of iterations
                 num_variable = 1,       #number of parameters to be optimized
-                c1 = 1,                 #cognitive coefficent ,c1>=0
-                c2 = 3,                 #social coefficent    ,c2<=4
+                c1 = 0.1,               #cognitive coefficent ,c1>=0
+                c2 = 0.1,               #social coefficent    ,c2<=4
                 quit_criteria = 0.0001, #acceptable fitness value
                 ):
         self.lower_bond = np.array(lower_bond)
@@ -43,7 +43,7 @@ class ParticleSwarmOptimization(NiaInterface):
 
     def run(self):
         self.generate_agents()
-        best_agent = self.agents[0]
+        self.best_agent = copy(self.agents[0])
         for i in range(self.max_iterations) :
             for agent in self.agents:
                 fitness = self.calculate_fitness(agent)
@@ -51,17 +51,19 @@ class ParticleSwarmOptimization(NiaInterface):
                     agent.personal_best = agent.position
                 agent.fitness = fitness
 
-                if fitness < best_agent.fitness:
-                    best_agent = copy(agent)
-                    self.best_agent = best_agent
+                if fitness < self.best_agent.fitness:
+                    self.best_agent = copy(agent)
+                
                 agent.velocity = agent.velocity + self.c1 * random() * (agent.personal_best - agent.position) \
-                                 + self.c2 * random() * (best_agent.position - agent.position)
+                                 + self.c2 * random() * (self.best_agent.position - agent.position)
                 agent.position = agent.position + agent.velocity
-            if fitness < self.quit_criteria:
-                self.message = 'quit criteria reached best answer is: ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness);
-                break
+
             self.iteration_function(self)
-        self.message = 'max itteration reached best answer so far is : ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness);
+            if fitness < self.quit_criteria:
+                self.message = 'quit criteria reached best answer is: ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness) + ' iteration : ' + str(i);
+                return self
+        self.message = 'max itteration reached last answer is : ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness);
+        return self
         
 
 
