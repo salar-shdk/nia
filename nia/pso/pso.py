@@ -10,7 +10,7 @@ class ParticleSwarmOptimization(NiaInterface):
                 iteration_function,     #will be called in each iteration
                 lower_bond,             #lower band of parameters
                 upper_bond,             #upper band of parameters
-                num_agents = 10,        #number of agents
+                num_particles = 10,        #number of particles
                 max_iterations = 100,   #max number of iterations
                 num_variable = 1,       #number of parameters to be optimized
                 c1 = 0.1,               #cognitive coefficent ,c1>=0
@@ -19,50 +19,50 @@ class ParticleSwarmOptimization(NiaInterface):
                 ):
         self.lower_bond = np.array(lower_bond)
         self.upper_bond = np.array(upper_bond)
-        self.fitness = np.zeros(shape=(num_agents,1))
+        self.fitness = np.zeros(shape=(num_particles,1))
         
-    class Agent:
+    class Particle:
         pass
 
-    def generate_agents(self):
-        self.agents = []
-        for i in range(self.num_agents):
-            agent = self.Agent()
-            agent.position = np.array([random() for i in range(self.num_variable)]) * (self.upper_bond - self.lower_bond) + self.lower_bond
-            agent.fitness  = self.calculate_fitness(agent)
-            agent.velocity = 0.0
-            agent.personal_best     = agent.fitness
-            self.agents.append(agent)
+    def generate_particles(self):
+        self.particles = []
+        for i in range(self.num_particles):
+            particle = self.Particle()
+            particle.position = np.array([random() for i in range(self.num_variable)]) * (self.upper_bond - self.lower_bond) + self.lower_bond
+            particle.fitness  = self.calculate_fitness(particle)
+            particle.velocity = 0.0
+            particle.personal_best     = particle.fitness
+            self.particles.append(particle)
 
-    def calculate_fitness(self,agent):
-        return self.cost_function(agent.position)
+    def calculate_fitness(self,particle):
+        return self.cost_function(particle.position)
         
     def log(self):
         print(self.population)
         print(self.fitness)
 
     def run(self):
-        self.generate_agents()
-        self.best_agent = copy(self.agents[0])
+        self.generate_particles()
+        self.best_particle = copy(self.particles[0])
         for i in range(self.max_iterations) :
-            for agent in self.agents:
-                fitness = self.calculate_fitness(agent)
-                if fitness < agent.fitness:
-                    agent.personal_best = agent.position
-                agent.fitness = fitness
+            for particle in self.particles:
+                fitness = self.calculate_fitness(particle)
+                if fitness < particle.fitness:
+                    particle.personal_best = particle.position
+                particle.fitness = fitness
 
-                if fitness < self.best_agent.fitness:
-                    self.best_agent = copy(agent)
+                if fitness < self.best_particle.fitness:
+                    self.best_particle = copy(particle)
                 
-                agent.velocity = agent.velocity + self.c1 * random() * (agent.personal_best - agent.position) \
-                                 + self.c2 * random() * (self.best_agent.position - agent.position)
-                agent.position = agent.position + agent.velocity
+                particle.velocity = particle.velocity + self.c1 * random() * (particle.personal_best - particle.position) \
+                                 + self.c2 * random() * (self.best_particle.position - particle.position)
+                particle.position = particle.position + particle.velocity
 
             self.iteration_function(self)
             if fitness < self.quit_criteria:
-                self.message = 'quit criteria reached best answer is: ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness) + ' iteration : ' + str(i);
+                self.message = 'quit criteria reached best answer is: ' + str(self.best_particle.position) + ' and best fitness is: ' + str(self.best_particle.fitness) + ' iteration : ' + str(i);
                 return self
-        self.message = 'max itteration reached last answer is : ' + str(self.best_agent.position) + ' and best fitness is: ' + str(self.best_agent.fitness);
+        self.message = 'max itteration reached last answer is : ' + str(self.best_particle.position) + ' and best fitness is: ' + str(self.best_particle.fitness);
         return self
         
 
