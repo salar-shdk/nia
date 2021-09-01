@@ -35,10 +35,6 @@ class GeneticAlgorithm(NiaInterface):
         new_population = np.append(population, fitness, axis=1)
         new_population = new_population[new_population[:, -1].argsort()]
         return new_population[:,:-1], new_population[:,-1:]
-        
-    def log(self):
-        print(self.population)
-        print(self.fitness)
 
     def run(self):
         self.population = self.generate_population(self.num_population)

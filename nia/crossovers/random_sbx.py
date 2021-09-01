@@ -2,15 +2,15 @@ from .cross_over import CrossOver
 import random
 import numpy as np
 
-class SBX(CrossOver):
+class RandomSBX(CrossOver):
     @CrossOver.initializer
-    def __init__(self, eta):
+    def __init__(self, eta=2):
         pass
 
     def generate(self, population, num_children):
         children = []
-        for i in range(int(len(population)/2)):
-            father1, father2 = population[i], population[i+1]
+        for i in range(int(num_children/2)):
+            father1, father2 = random.choices(population, k=2)
             rand = random.random()
             rand = 1 - rand if rand >= 0.5 else rand
             beta = (2 * rand) ** (1 / (1 + self.eta))

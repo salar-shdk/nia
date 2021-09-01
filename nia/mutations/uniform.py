@@ -3,7 +3,7 @@ import numpy as np
 
 class Uniform(Mutation):
     @Mutation.initializer
-    def __init__(self, rate):
+    def __init__(self, rate=0.01):
         pass
 
     def mutate(self, population, random_population):
