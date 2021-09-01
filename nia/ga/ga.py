@@ -1,5 +1,5 @@
 from .. import NiaInterface
-from ..cross_overs import SBX, RandomSBX
+from ..crossovers import SBX, RandomSBX
 from ..mutations import Uniform
 import numpy as np
 from random import random
@@ -16,7 +16,7 @@ class GeneticAlgorithm(NiaInterface):
                 max_iteration = 100,
                 num_variable = 1,
                 quit_criterion = 0.001,
-                cross_over = RandomSBX(2),
+                crossover = RandomSBX(2),
                 mutation = Uniform(0.05)
                 ):
         self.lower_bond = np.array(lower_bond)
@@ -41,7 +41,7 @@ class GeneticAlgorithm(NiaInterface):
         self.fitness = self.get_fitness(self.population)
         self.population, self.fitness = self.sort_by_fitness(self.population, self.fitness)
         for self.iteration in range(self.max_iteration):
-            children = self.cross_over.generate(self.population[:self.num_parents], self.num_parents)
+            children = self.crossover.generate(self.population[:self.num_parents], self.num_parents)
             children = self.mutation.mutate(children, self.generate_population(self.num_parents))
             children_fittness = self.get_fitness(children)            
             self.population , self.fitness = self.sort_by_fitness(

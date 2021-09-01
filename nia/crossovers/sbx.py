@@ -1,4 +1,4 @@
-from .cross_over import CrossOver
+from .crossover import CrossOver
 import random
 import numpy as np
 
