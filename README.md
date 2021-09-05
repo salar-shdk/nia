@@ -1,7 +1,7 @@
 # NIA
 Nature Inspired Optimization Algorithms
 Supported Algorithms :  
-- [x] Genetic algorithm  
+- [x] Genetic algorithm :heavy_check_mark:  
 - [ ] Differential Evolution  
 - [ ] Evolutionary Programming  
 - [ ] Artificial Immune System  
@@ -23,7 +23,7 @@ Supported Algorithms :
 - [ ] Flower Pollination Algorithm  
 - [ ] Invasive Weed Optimization  
 - [ ] Water Cycle Algorithm  
-- [ ] Teaching–Learning-Based Optimization  
+- [ ] Teaching–Learning-Based Optimization :heavy_check_mark:  
 - [x] Particle Swarm Optimization  
 - [ ] Simulated Annealing Algorithm  
 - [ ] Gravitational Search Algorithm  
