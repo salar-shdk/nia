@@ -23,8 +23,8 @@ Supported Algorithms :
 - [ ] Flower Pollination Algorithm  
 - [ ] Invasive Weed Optimization  
 - [ ] Water Cycle Algorithm  
-- [ ] Teaching–Learning-Based Optimization :heavy_check_mark:  
-- [x] Particle Swarm Optimization  
+- [ ] Teaching–Learning-Based Optimization  
+- [x] Particle Swarm Optimization :heavy_check_mark:  
 - [ ] Simulated Annealing Algorithm  
 - [ ] Gravitational Search Algorithm  
 - [ ] Big Bang - Big Crunch  
