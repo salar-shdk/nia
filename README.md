@@ -2,7 +2,7 @@
 Nature Inspired Optimization Algorithms
 
 # Instalation
-You can check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it using pip:
+Check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it using pip:
 ```
 pip install nia
 ```
