@@ -1,1 +1,0 @@
-from .ga import GeneticAlgorithm
