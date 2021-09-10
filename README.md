@@ -1,6 +1,13 @@
 # NIA
 Nature Inspired Optimization Algorithms
-Supported Algorithms :  
+
+# Instalation
+You can check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it using pip:
+```
+pip install nia
+```
+
+# Supported Algorithms :  
 - [x] Genetic algorithm 
 - [ ] Differential Evolution  
 - [ ] Evolutionary Programming  
