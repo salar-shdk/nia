@@ -1,8 +1,13 @@
 # NIA
 Nature Inspired Optimization Algorithms
+<a><img align="right" src="https://img.shields.io/github/license/salar-shdk/nia"/></a>
+<a><img align="right" src="https://img.shields.io/pypi/v/nia"/></a>
+<a><img align="right" src="https://img.shields.io/pypi/pyversions/nia"/></a>
+<a><img align="right" src="https://img.shields.io/github/languages/code-size/salar-shdk/nia?color=blueviolet"/></a>
 
 # Instalation
 Check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it using pip:
+<a><img align="right" src="https://pepy.tech/badge/nia"/></a>
 ```
 pip install nia
 ```
