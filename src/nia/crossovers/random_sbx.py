@@ -7,9 +7,9 @@ class RandomSBX(CrossOver):
     def __init__(self, eta=2):
         pass
 
-    def generate(self, population, num_children):
+    def generate(self, population):
         children = []
-        for i in range(int(num_children/2)):
+        for i in range(int(len(population)/2)):
             father1, father2 = random.choices(population, k=2)
             rand = random.random()
             rand = 1 - rand if rand >= 0.5 else rand

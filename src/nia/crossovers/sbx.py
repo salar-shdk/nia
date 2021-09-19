@@ -7,7 +7,7 @@ class SBX(CrossOver):
     def __init__(self, eta=2):
         pass
 
-    def generate(self, population, num_children):
+    def generate(self, population):
         children = []
         for i in range(int(len(population)/2)):
             father1, father2 = population[i], population[i+1]

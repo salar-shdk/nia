@@ -5,7 +5,7 @@ class CrossOver():
     def __init__(self):
         pass
 
-    def generate(self, population, num_children):
+    def generate(self, population):
         pass
 
     @classmethod
