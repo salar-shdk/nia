@@ -21,7 +21,7 @@ pip install nia
 - [ ] Biogeography-based  
 - [ ] Symbiotic Organisms Search  
 - [ ] Ant Colony Optimization  
-- [ ] Artificial Bee Colony  
+- [x] Artificial Bee Colony  
 - [ ] Moth Flame Optimization Algorithm  
 - [ ] Cuckoo Search  
 - [ ] Green Herons Optimization Algorithm  
