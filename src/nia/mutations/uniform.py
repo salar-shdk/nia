@@ -7,7 +7,7 @@ class Uniform(Mutation):
         pass
 
     def mutate(self, population, random_population):
-        random_rates = np.random.rand(len(population), len(population[0])) # check this
+        random_rates = np.random.rand(*population.shape)
         random_population_zeros = np.where(random_rates >= self.rate, 0, 1)
         population_zeros = np.where(random_rates < self.rate, 0, 1)
         random_population = random_population * random_population_zeros
