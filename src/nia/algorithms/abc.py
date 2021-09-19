@@ -1,7 +1,6 @@
 from .. import NiaInterface
 import numpy as np
 import random
-from copy import copy
 from operator import attrgetter
 
 class ArtificialBeeColony(NiaInterface):
