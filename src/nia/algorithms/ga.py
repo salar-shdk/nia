@@ -41,9 +41,9 @@ class GeneticAlgorithm(NiaInterface):
     def run(self):
         self.population = self.generate_population(self.num_population[0])
         self.fitness = self.get_fitness(self.population)
-        selected_population, selected_fitness = self.selection.select(self.population, self.fitness)
 
         for self.iteration in range(self.max_iteration):
+            selected_population, selected_fitness = self.selection.select(self.population, self.fitness)
             children = self.crossover.generate(selected_population)
             children = self.mutation.mutate(children, self.generate_population(children.shape[0]))
             children_fittness = self.get_fitness(children)      
@@ -55,6 +55,8 @@ class GeneticAlgorithm(NiaInterface):
             if self.iteration_function:
                 self.iteration_function(self)
             if self.fitness[0] < self.quit_criteria:
+                self.message = 'quit criteria reached best answer is: ' + str(self.best[0]) + ' and best fitness is: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
                 break
-        return self.best
+        self.message = 'max iteration reached best answer so far: ' + str(self.best[0]) + ' with best fitness: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
+        return self
         
