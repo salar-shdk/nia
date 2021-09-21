@@ -12,6 +12,56 @@ Check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it usin
 pip install nia
 ```
 
+# Simple Usage
+```
+from nia.algorithms import GeneticAlgorithm
+
+def ackley(X):
+    x = X[0]
+    y = X[1]
+    return -20*np.exp(-0.2*np.sqrt(0.5*(x**2+y**2)))-np.exp(0.5*(np.cos(2*np.pi*x)+np.cos(2*np.pi*y)))+np.e+20
+
+nia = GeneticAlgorithm(cost_function=ackley,
+                       lower_bond=[-5,-5],
+                       upper_bond=[5,5],
+                                )
+nia.run()
+```
+
+# Pro Usage
+```
+from nia.algorithms import GeneticAlgorithm
+from nia.selections import Tournament
+from nia.crossovers import RandomSBX
+from nia.mutations import Uniform
+import numpy as np
+
+def ackley(X):
+    x = X[0]
+    y = X[1]
+    return -20*np.exp(-0.2*np.sqrt(0.5*(x**2+y**2)))-np.exp(0.5*(np.cos(2*np.pi*x)+np.cos(2*np.pi*y)))+np.e+20
+
+def log(ga):
+  print(ga.best)
+
+lower = np.array([-5,-5])
+upper = np.array([5,5])
+
+nia = GeneticAlgorithm(cost_function=ackley,
+                       iteration_function=log,
+                       lower_bond=lower,
+                       upper_bond=upper,
+                       quit_criteria = 0.0001,
+                       num_variable = 2,
+                       num_population = 20,
+                       max_iteration = 100,
+                       crossover = RandomSBX(2),
+                       mutation = Uniform(0.05),
+                       selection = Tournament(20)
+                                )
+nia.run()
+```
+
 # Supported Algorithms :  
 - [x] Genetic algorithm 
 - [ ] Differential Evolution  
