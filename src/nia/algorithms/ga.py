@@ -56,7 +56,7 @@ class GeneticAlgorithm(NiaInterface):
                 self.iteration_function(self)
             if self.fitness[0] < self.quit_criteria:
                 self.message = 'quit criteria reached best answer is: ' + str(self.best[0]) + ' and best fitness is: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
-                break
+                return self
         self.message = 'max iteration reached best answer so far: ' + str(self.best[0]) + ' with best fitness: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
         return self
         
