@@ -72,7 +72,7 @@ output
 max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fitness: 0.1786046633597529 iteration : 99
 ```
 # Supported Algorithms :  
-- [x] Genetic algorithm 
+- [x] Genetic algorithm (GeneticAlgorithm)
 - [ ] Differential Evolution  
 - [ ] Evolutionary Programming  
 - [ ] Artificial Immune System  
@@ -80,7 +80,7 @@ max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fi
 - [ ] Biogeography-based  
 - [ ] Symbiotic Organisms Search  
 - [ ] Ant Colony Optimization  
-- [x] Artificial Bee Colony  
+- [x] Artificial Bee Colony (ArtificialBeeColony)
 - [ ] Moth Flame Optimization Algorithm  
 - [ ] Cuckoo Search  
 - [ ] Green Herons Optimization Algorithm  
@@ -95,7 +95,20 @@ max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fi
 - [ ] Invasive Weed Optimization  
 - [ ] Water Cycle Algorithm  
 - [ ] Teaching–Learning-Based Optimization  
-- [x] Particle Swarm Optimization  
+- [x] Particle Swarm Optimization (ParticleSwarmOptimization)
 - [ ] Simulated Annealing Algorithm  
 - [ ] Gravitational Search Algorithm  
 - [ ] Big Bang - Big Crunch  
+
+# Supported Selection Operators :  
+- [x] Rank (GeneticAlgorithm)
+- [x] Tournament (Tournament)  
+
+# Supported Cross Over Operators :  
+- [x] K-Point (KPoint)
+- [x] SBX (SBX)  
+- [x] Random SBX (RandomSBX)
+
+# Supported Mutations Operators :  
+- [x] Uniform (Uniform) 
+
