@@ -1,5 +1,5 @@
 from .. import NiaInterface
-from ..crossovers import SBX, RandomSBX
+from ..crossovers import SBX
 from ..mutations import Uniform
 from ..selections import Rank
 import numpy as np
