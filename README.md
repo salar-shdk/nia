@@ -12,14 +12,16 @@ Check [NIA's PyPI page](https://pypi.org/project/nia/) or simply install it usin
 pip install nia
 ```
 
-# Simple Usage
-```
+# Usage
+Solve Ackley problem using Genetic Algorithm:
+``` python
 from nia.algorithms import GeneticAlgorithm
 
 def ackley(X):
     x = X[0]
     y = X[1]
-    return -20*np.exp(-0.2*np.sqrt(0.5*(x**2+y**2)))-np.exp(0.5*(np.cos(2*np.pi*x)+np.cos(2*np.pi*y)))+np.e+20
+    return -20 * np.exp(-0.2 * np.sqrt(0.5 * (x**2 + y**2))) - np.exp(0.5 *
+        (np.cos(2 * np.pi * x) + np.cos(2 * np.pi * y))) + np.e + 20
 
 nia = GeneticAlgorithm(cost_function=ackley,
                        lower_bond=[-5,-5],
@@ -28,14 +30,23 @@ nia = GeneticAlgorithm(cost_function=ackley,
 nia.run()
 print(nia.message);
 ```
-output
+output:  
+
 ```
 quit criteria reached best answer is: [-0.02618036 -0.03615453] and best fitness is: 0.0006327163637145361 iteration : 11
-```
+```  
 
-# Pro Usage
-```
+Plot:  
+<p align="center">
+  <img alt="Result gif" align="center" src="https://user-images.githubusercontent.com/33146532/134220470-742ca835-2b9a-4d1d-9a87-76c337156823.gif"/>
+</p>
+
+
+
+## Customization:
+``` python
 from nia.algorithms import GeneticAlgorithm
+# Specific selection, crossover and muttion algorithms are available under related sub-packages.
 from nia.selections import Tournament
 from nia.crossovers import RandomSBX
 from nia.mutations import Uniform
@@ -44,7 +55,8 @@ import numpy as np
 def ackley(X):
     x = X[0]
     y = X[1]
-    return -20*np.exp(-0.2*np.sqrt(0.5*(x**2+y**2)))-np.exp(0.5*(np.cos(2*np.pi*x)+np.cos(2*np.pi*y)))+np.e+20
+    return -20 * np.exp(-0.2 * np.sqrt(0.5 * (x**2 + y**2))) - np.exp(0.5 *
+        (np.cos(2 * np.pi * x) + np.cos(2 * np.pi * y))) + np.e + 20
 
 def log(ga):
   print(ga.best)
@@ -66,11 +78,13 @@ nia = GeneticAlgorithm(cost_function=ackley,
                                 )
 nia.run()
 print(nia.message);
-```
+```  
 output
 ```
 max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fitness: 0.1786046633597529 iteration : 99
 ```
+
+
 # Supported Algorithms :  
 - [x] Genetic algorithm (GeneticAlgorithm)
 - [ ] Differential Evolution  
@@ -101,7 +115,7 @@ max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fi
 - [ ] Big Bang - Big Crunch  
 
 # Supported Selection Operators :  
-- [x] Rank (GeneticAlgorithm)
+- [x] Rank (Rank)
 - [x] Tournament (Tournament)  
 
 # Supported Cross Over Operators :  
@@ -109,6 +123,6 @@ max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fi
 - [x] SBX (SBX)  
 - [x] Random SBX (RandomSBX)
 
-# Supported Mutations Operators :  
+# Supported Mutation Operators :  
 - [x] Uniform (Uniform) 
 
