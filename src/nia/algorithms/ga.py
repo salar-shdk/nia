@@ -15,7 +15,7 @@ class GeneticAlgorithm(NiaInterface):
                 num_population = 100,
                 max_iteration = 100,
                 num_variable = 1,
-                quit_criterion = 0.001,
+                quit_criteria = 0.001,
                 crossover = RandomSBX(2),
                 mutation = Uniform(0.05),
                 selection = Rank(20)
@@ -54,7 +54,7 @@ class GeneticAlgorithm(NiaInterface):
             self.best = (self.population[0], self.fitness[0])
             if self.iteration_function:
                 self.iteration_function(self)
-            if self.fitness[0] < self.quit_criterion:
+            if self.fitness[0] < self.quit_criteria:
                 break
         return self.best
         
