@@ -114,10 +114,10 @@ class ArtificialBeeColony(NiaInterface):
             self.scout_bees_stage()
             fitness = self.best_source().fitness
             if fitness < self.quit_criteria:
-                self.message = 'quit criteria reached best answer is: ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness) + ' iteration : ' + str(i);
+                self.message = 'quit criteria reached best answer is: ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness) + ' iteration : ' + str(i)
                 return self
             self.iteration_function(self)
-        self.message = 'max itteration reached last answer is : ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness);
+        self.message = 'max itteration reached last answer is : ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness)
         return self
         
 
