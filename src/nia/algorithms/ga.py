@@ -16,7 +16,7 @@ class GeneticAlgorithm(NiaInterface):
                 max_iteration = 100,
                 num_variable = 1,
                 quit_criteria = 0.001,
-                crossover = RandomSBX(2),
+                crossover = SBX(2),
                 mutation = Uniform(0.05),
                 selection = Rank(20)
                 ):
