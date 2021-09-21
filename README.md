@@ -26,6 +26,11 @@ nia = GeneticAlgorithm(cost_function=ackley,
                        upper_bond=[5,5],
                                 )
 nia.run()
+print(nia.message);
+```
+output
+```
+quit criteria reached best answer is: [-0.02618036 -0.03615453] and best fitness is: 0.0006327163637145361 iteration : 11
 ```
 
 # Pro Usage
@@ -60,8 +65,12 @@ nia = GeneticAlgorithm(cost_function=ackley,
                        selection = Tournament(20)
                                 )
 nia.run()
+print(nia.message);
 ```
-
+output
+```
+max iteration reached best answer so far: [-0.02618036 -0.03615453] with best fitness: 0.1786046633597529 iteration : 99
+```
 # Supported Algorithms :  
 - [x] Genetic algorithm 
 - [ ] Differential Evolution  
