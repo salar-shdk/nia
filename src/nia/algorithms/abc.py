@@ -22,6 +22,35 @@ class ArtificialBeeColony(NiaInterface):
         self.employed_bees = round(num_bees * employed_bees_percentage / 100)
         self.onlooker_bees = num_bees - self.employed_bees
 
+    def get_best(self):
+        return {
+            'result': self.best_source().solution,
+            'fitness': self.best_source().fitness
+            }
+
+    def get_iteration_info(self):
+        return {
+            'population': self.food_sources,
+            'interation': self.iteration,
+            'best': self.get_best(),
+        }
+
+    class FoodSource:
+        def __init__(self):
+            self.solution = None
+            self.fitness = None
+            self.trials = None
+
+        def __repr__(self):
+            return str(self.__dict__)
+        
+    def create_food_source(self):
+        food_source = self.FoodSource()
+        food_source.solution = np.array([random.random() for i in range(self.num_variable)]) * (self.upper_bond - self.lower_bond) + self.lower_bond
+        food_source.fitness = self.fitness(food_source.solution)
+        food_source.trials = 0
+        return food_source 
+
     def generate_food_sources(self):
         self.food_sources = []
         for i in range(self.employed_bees):
@@ -96,28 +125,20 @@ class ArtificialBeeColony(NiaInterface):
         best = min(self.food_sources, key=attrgetter('fitness'))
         return best
 
-    class FoodSource:
-        pass
-        
-    def create_food_source(self):
-        food_source = self.FoodSource()
-        food_source.solution = np.array([random.random() for i in range(self.num_variable)]) * (self.upper_bond - self.lower_bond) + self.lower_bond
-        food_source.fitness = self.fitness(food_source.solution)
-        food_source.trials = 0
-        return food_source 
-
     def run(self):
         self.generate_food_sources()
-        for i in range(self.max_iterations) :
+        for self.iteration in range(self.max_iterations) :
             self.employed_bees_stage()
             self.onlooker_bees_stage()
             self.scout_bees_stage()
             fitness = self.best_source().fitness
+
+            super().run_iteration_function()
             if fitness < self.quit_criteria:
-                self.message = 'quit criteria reached best answer is: ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness) + ' iteration : ' + str(i)
+                super().finilize(True)
                 return self
-            self.iteration_function(self)
-        self.message = 'max itteration reached last answer is : ' + str(self.best_source().solution) + ' and best fitness is: ' + str(self.best_source().fitness)
+
+        super().finilize(False)
         return self
         
 

@@ -25,6 +25,19 @@ class GeneticAlgorithm(NiaInterface):
         if type(num_population) is int:
             self.num_population = np.array([num_population] * max_iteration)
 
+    def get_best(self):
+        return {
+            'result': self.best[0],
+            'fitness': self.best[1]
+            }
+
+    def get_iteration_info(self):
+        return {
+            'population': self.population,
+            'interation': self.iteration,
+            'best': self.get_best(),
+        }
+
     def generate_population(self, volume):
         return np.random.rand(volume, self.num_variable) * (self.upper_bond - self.lower_bond) + self.lower_bond
 
@@ -52,11 +65,12 @@ class GeneticAlgorithm(NiaInterface):
                 np.concatenate((self.fitness, children_fittness), axis=0)
             )
             self.best = (self.population[0], self.fitness[0])
-            if self.iteration_function:
-                self.iteration_function(self)
+
+            super().run_iteration_function()
             if self.fitness[0] < self.quit_criteria:
-                self.message = 'quit criteria reached best answer is: ' + str(self.best[0]) + ' and best fitness is: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
+                super().finilize(True)
                 return self
-        self.message = 'max iteration reached best answer so far: ' + str(self.best[0]) + ' with best fitness: ' + str(self.best[1]) + ' iteration : ' + str(self.iteration)
+
+        super().finilize(False)
         return self
         
