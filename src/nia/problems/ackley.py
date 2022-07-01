@@ -1,7 +1,9 @@
 import numpy as np
 
-def ackley(X):
-    x = X[0]
-    y = X[1]
-    return -20 * np.exp(-0.2 * np.sqrt(0.5 * (x**2 + y**2))) - np.exp(0.5 *
-        (np.cos(2 * np.pi * x) + np.cos(2 * np.pi * y))) + np.e + 20
+def ackley(x):
+    val1 = np.sum(np.square(x))
+    val2 = np.sum(np.cos(2 * np.pi * x))
+    tmp1 = -0.2 * np.sqrt(val1 / 4)
+    tmp2 = val2 / 4
+
+    return -20.0 * np.exp(tmp1) - np.exp(tmp2) + 20.0 + np.exp(1)
