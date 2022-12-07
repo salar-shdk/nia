@@ -1,4 +1,5 @@
 # NIA
+![](NIA Logo.png)
 Nature Inspired Optimization Algorithms
 <a><img align="right" src="https://img.shields.io/github/license/salar-shdk/nia"/></a>
 <a><img align="right" src="https://img.shields.io/pypi/v/nia"/></a>
