@@ -3,8 +3,9 @@
 <a><img align="right" src="https://img.shields.io/pypi/v/nia"/></a>
 <a><img align="right" src="https://img.shields.io/pypi/pyversions/nia"/></a>
 <a><img align="right" src="https://img.shields.io/github/languages/code-size/salar-shdk/nia?color=blueviolet"/></a>
-
-![](https://github.com/salar-shdk/nia/raw/main/NIA%20Logo.png)  
+<p align="center">
+  <img src="https://github.com/salar-shdk/nia/raw/main/NIA%20Logo.png" />
+</p>
 NIA is a python package for Nature Inspired Optimization Algorithms which makes optimization process easy and fast.
 
 # Instalation
