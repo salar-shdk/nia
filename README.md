@@ -17,7 +17,7 @@ pip install nia
 
 # Usage
 Solve Ackley problem using Genetic Algorithm:
-``` python
+```python
 from nia.algorithms import GeneticAlgorithm
 from nia.problems import ackley
 
@@ -43,7 +43,7 @@ Plot:
 
 
 ## Customization:
-``` python
+```python
 from nia.algorithms import GeneticAlgorithm
 # Specific selection, crossover and muttion algorithms are available under related sub-packages.
 from nia.selections import Tournament
